@@ -2,7 +2,7 @@ import archiver from "archiver";
 import fs from "fs";
 import path from "path";
 
-const output = fs.createWriteStream(path.join("dist", "casting-tizen.wgt"));
+const output = fs.createWriteStream(path.join("dist", "castmesh-tizen-tv.wgt"));
 const archive = archiver("zip", { zlib: { level: 9 } });
 
 output.on("close", () => {

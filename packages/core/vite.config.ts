@@ -6,4 +6,7 @@ export default defineConfig({
     dts: true,
     export: true,
   },
+  test: {
+    include: ["src/**/*.test.ts"],
+  },
 });

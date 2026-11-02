@@ -1,0 +1,1 @@
+export { receiverService } from "./receiver";

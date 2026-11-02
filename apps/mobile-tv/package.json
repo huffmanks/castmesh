@@ -4,21 +4,43 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "dev": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "dev": "expo start --dev-client --clear",
+    "android": "pnpm run prebuild && expo run:android",
+    "android:tv": "pnpm run prebuild:tv && cross-env EXPO_TV=1 expo run:android",
+    "web": "expo start --web",
+    "prebuild": "expo prebuild --platform android --clean",
+    "prebuild:tv": "cross-env EXPO_TV=1 expo prebuild --platform android --clean",
+    "build:dev": "eas build --clear-cache --platform android --profile development --local",
+    "build:apk": "eas build --clear-cache --platform android --profile preview --local",
+    "build:aab": "eas build --clear-cache --platform android --profile preview-bundle --local",
+    "build:tv:dev": "eas build --clear-cache --platform android --profile development-tv --local",
+    "build:tv:apk": "eas build --clear-cache --platform android --profile preview-tv --local",
+    "build:tv:aab": "eas build --clear-cache --platform android --profile preview-tv-bundle --local",
+    "export:web": "expo export --platform web",
+    "eas-build-post-install": "pnpm --filter @castmesh/core build && pnpm --filter @castmesh/react build"
   },
   "dependencies": {
     "@castmesh/core": "workspace:*",
+    "@castmesh/react": "workspace:*",
     "expo": "~58.0.22",
+    "expo-dev-client": "^58.0.18",
     "expo-status-bar": "~58.0.4",
+    "expo-system-ui": "~58.0.7",
     "react": "catalog:",
-    "react-native": "0.88.1"
+    "react-native": "npm:react-native-tvos@0.87-stable",
+    "react-native-get-random-values": "^2.1.0"
   },
   "devDependencies": {
-    "@react-native-tvos/config-tv": "catalog:",
+    "@react-native-tvos/config-tv": "^0.1.7",
     "@types/react": "catalog:",
+    "cross-env": "^10.1.0",
     "typescript": "catalog:"
+  },
+  "expo": {
+    "install": {
+      "exclude": [
+        "react-native"
+      ]
+    }
   }
 }

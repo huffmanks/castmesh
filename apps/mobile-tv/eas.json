@@ -1,0 +1,57 @@
+{
+  "cli": {
+    "version": ">= 27.2.0",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "development": {
+      "environment": "development",
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "development-tv": {
+      "extends": "development",
+      "env": {
+        "EXPO_TV": "1"
+      }
+    },
+    "preview": {
+      "environment": "preview",
+      "developmentClient": false,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "cache": {
+        "disabled": true
+      }
+    },
+    "preview-tv": {
+      "extends": "preview",
+      "env": {
+        "EXPO_TV": "1"
+      }
+    },
+    "preview-bundle": {
+      "environment": "preview",
+      "autoIncrement": false,
+      "developmentClient": false,
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "cache": {
+        "disabled": true
+      },
+      "env": {
+        "NODE_OPTIONS": "--max-old-space-size=8192"
+      }
+    },
+    "preview-tv-bundle": {
+      "extends": "preview-bundle",
+      "env": {
+        "EXPO_TV": "1",
+        "NODE_OPTIONS": "--max-old-space-size=8192"
+      }
+    }
+  }
+}

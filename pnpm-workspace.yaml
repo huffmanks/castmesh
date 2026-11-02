@@ -5,7 +5,6 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@react-native-tvos/config-tv": ^0.1.7
   "@types/node": ^24
   "@types/react": ^19.3.0
   "@types/react-dom": ^19.3.0
@@ -27,3 +26,6 @@ peerDependencyRules:
     - vite
   allowedVersions:
     vite: "*"
+allowBuilds:
+  dtrace-provider: true
+  protobufjs: true

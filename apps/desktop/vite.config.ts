@@ -21,5 +21,9 @@ export default defineConfig(() => ({
     watch: {
       ignored: ["**/src-tauri/**"],
     },
+    build: {
+      outDir: "dist",
+      emptyOutDir: true,
+    },
   },
 }));

@@ -4,13 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev:core": "vp run --filter @castmesh/core dev",
-    "dev:desktop": "vp run --filter @castmesh/desktop dev",
+    "dev:desktop": "vp run --filter @castmesh/desktop tauri:dev",
     "dev:tizen": "vp run --filter @castmesh/tizen-tv dev",
-    "dev:mobile": "vp run --filter @castmesh/mobile-tv dev",
-    "build": "vp check && vp run -r build",
-    "build:core": "vp run --filter @castmesh/core build",
-    "build:desktop": "vp run --filter @castmesh/desktop build",
+    "build:packages": "vp run --filter @castmesh/core build && vp run --filter @castmesh/react build",
+    "build:desktop": "vp run --filter @castmesh/desktop tauri:build",
     "build:tizen": "vp run --filter @castmesh/tizen-tv build",
     "check:fix": "vp check --fix",
     "test:watch": "vp test watch"
